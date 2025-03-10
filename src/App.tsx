@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import { words } from "./data/words";
 import { Word } from "./types";
@@ -18,11 +18,11 @@ function App() {
   const getRandomWord = (words: Word[]) => {
     return words[Math.floor(Math.random() * words.length)];
   };
-  const displayNewWord = () => {
+  const displayNewWord = useCallback(() => {
     setCurrentWord(getRandomWord(words));
     setUserInput("");
     setMistakeCount(0);
-  };
+  }, []);
   const startGame = () => {
     setScore(0);
     setQuestionsRemaining(questionLimit);
@@ -44,33 +44,42 @@ function App() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const userInputValue = e.target.value;
     setUserInput(userInputValue);
-    let mistakes = 0;
 
-    for (let i = 0; i < userInputValue.length; i++) {
-      if (userInputValue[i] !== currentWord.roman[i]) {
-        mistakes++;
-      }
-    }
+    // 入力ミスの数を計算して状態を更新
+    const currentMistakes = userInputValue
+      .split("")
+      .reduce((count, char, index) => {
+        return char !== currentWord.roman[index] ? count + 1 : count;
+      }, 0);
 
-    setMistakeCount(mistakes);
-
-    if (mistakes >= 2) {
-      setQuestionsRemaining(questionsRemaining - 1);
-      if (questionsRemaining > 0) {
-        displayNewWord();
-      } else {
-        endGameSequence();
-      }
-    } else if (userInputValue === currentWord.roman) {
-      setScore(score + 1);
-      setQuestionsRemaining(questionsRemaining - 1);
-      if (questionsRemaining > 0) {
-        displayNewWord();
-      } else {
-        endGameSequence();
-      }
-    }
+    setMistakeCount(currentMistakes);
   };
+
+  // 入力状態とゲームのフローを管理する副作用
+  useEffect(() => {
+    if (!isGameStarted || userInput.length === 0) return;
+
+    // 正解の場合
+    if (userInput === currentWord.roman) {
+      setScore(prevScore => prevScore + 1);
+      setQuestionsRemaining(prevRemaining => prevRemaining - 1);
+    }
+    // 2回以上のミスがある場合
+    else if (mistakeCount >= 2) {
+      setQuestionsRemaining(prevRemaining => prevRemaining - 1);
+    }
+    // 上記以外は入力途中なので何もしない
+    else {
+      return;
+    }
+
+    // 質問が残っている場合は新しい単語を表示、そうでなければゲーム終了
+    if (questionsRemaining > 1) {
+      displayNewWord();
+    } else {
+      endGameSequence();
+    }
+  }, [userInput, mistakeCount, currentWord.roman, displayNewWord, isGameStarted, questionsRemaining]);
 
   return (
     <div id="gameContainer">
