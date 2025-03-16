@@ -9,8 +9,9 @@ export const GameSettings: React.FC<GameSettingsProps> = ({ onStartGame }) => {
     <div id="settings" className="card">
       <div className="container">
         <div className="settings-section">
-          <p className="game-description">
-          100秒内にできるだけ多くの単語を正確にタイプしましょう！
+          <h2>- Typing Game -</h2>
+          <p style={{ fontSize: "0.5em" }}>
+            ビジネス用語をタイピングしてスコアを競おう！
           </p>
         </div>
         <button id="startButton" className="button" onClick={onStartGame}>

@@ -80,8 +80,6 @@ body {
   padding: 2.5rem;
   border-radius: 0.5rem;
   width: 100%;
-  min-height: 350px;
-  margin: auto;
   box-shadow: 1px 5px 6px rgb(80, 80, 80);
 }
 
@@ -488,4 +486,10 @@ h3 {
 .word-timer-bar {
   height: 100%;
   transition: width 0.5s linear;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
 }
