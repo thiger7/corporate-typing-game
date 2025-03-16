@@ -17,31 +17,32 @@ export const GameResult: React.FC<GameResultProps> = ({
   return (
     <div id="endGame" className="card">
       <div className="container result-container">
-        <h2>タイピング結果</h2>
+        <div className="result-header">
+          <h2>RESULT</h2>
+        </div>
+
         <div className="total-score">
-          <div className="score-value">{score}</div>
-          <div className="score-label">総合スコア</div>
+          <div className="score-label">YOUR SCORE</div>
+          <div className="score-value">{score}<span style={{fontSize: "0.5em"}}> 点</span></div>
         </div>
 
         <div className="stats-container">
           <div className="stats-row">
             <div className="stats-item">
-              <div className="stats-value">{typeStats.accuracy}%</div>
               <div className="stats-label">正確率</div>
+              <div className="stats-value">{typeStats.accuracy}%</div>
             </div>
             <div className="stats-item">
-              <div className="stats-value">{typeStats.typingSpeed}</div>
               <div className="stats-label">タイピング速度(文字/分)</div>
+              <div className="stats-value">{typeStats.typingSpeed}</div>
             </div>
-          </div>
-          <div className="stats-row">
             <div className="stats-item">
+              <div className="stats-label">成功数 / 全{totalQuestions}問</div>
               <div className="stats-value">{typeStats.wordsCompleted}</div>
-              <div className="stats-label">完了問題数 / {totalQuestions}</div>
             </div>
             <div className="stats-item">
-              <div className="stats-value">{typeStats.maxCombo}</div>
               <div className="stats-label">最大コンボ</div>
+              <div className="stats-value">{typeStats.maxCombo}</div>
             </div>
           </div>
         </div>
@@ -52,22 +53,22 @@ export const GameResult: React.FC<GameResultProps> = ({
             <table className="score-details">
               <tbody>
                 <tr>
-                  <td>基本スコア:</td>
+                  <td>基本スコア</td>
                   <td>{typeStats.detailedScores.baseScore}</td>
                   <td>(正確にタイプした文字数)</td>
                 </tr>
                 <tr>
-                  <td>コンボボーナス:</td>
+                  <td>コンボボーナス</td>
                   <td>{typeStats.detailedScores.comboBonus}</td>
                   <td>(最大コンボ: {typeStats.maxCombo})</td>
                 </tr>
                 <tr>
-                  <td>スピードボーナス:</td>
+                  <td>スピードボーナス</td>
                   <td>{typeStats.detailedScores.speedBonus}</td>
                   <td>({typeStats.typingSpeed} 文字/分)</td>
                 </tr>
                 <tr>
-                  <td>正確性ボーナス:</td>
+                  <td>正確性ボーナス</td>
                   <td>{typeStats.detailedScores.accuracyBonus}</td>
                   <td>(正確率: {typeStats.accuracy}%)</td>
                 </tr>
@@ -77,27 +78,34 @@ export const GameResult: React.FC<GameResultProps> = ({
 
           <div className="typing-stats">
             <h3>入力統計</h3>
-            <div className="typing-stats-row">
-              <div className="typing-stats-item">
-                入力文字数:{" "}
-                <span className="highlight">{typeStats.totalTyped}</span>
-              </div>
-              <div className="typing-stats-item">
-                正確:{" "}
-                <span className="highlight-success">
-                  {typeStats.correctTyped}
-                </span>
-              </div>
-              <div className="typing-stats-item">
-                ミス:{" "}
-                <span className="highlight-error">
-                  {typeStats.mistakeTyped}
-                </span>
-              </div>
-            </div>
+            <table className="score-details">
+              <tbody>
+                <tr>
+                  <td>入力文字数</td>
+                  <td>
+                    <span className="highlight">{typeStats.totalTyped}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>正確タイプ数</td>
+                  <td>
+                    <span className="highlight-success">
+                      {typeStats.correctTyped}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>ミスタイプ数</td>
+                  <td>
+                    <span className="highlight-error">
+                      {typeStats.mistakeTyped}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-
         <button id="retryButton" className="button" onClick={onRetry}>
           再チャレンジ
         </button>
