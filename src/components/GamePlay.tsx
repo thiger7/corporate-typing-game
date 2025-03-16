@@ -34,6 +34,8 @@ export const GamePlay: React.FC<GamePlayProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const gameAreaRef = useRef<HTMLDivElement>(null);
   const [hasError, setHasError] = useState(false);
+  const [countdown, setCountdown] = useState(3);
+  const [isCountingDown, setIsCountingDown] = useState(true);
 
   // 新しい単語が表示されたらエラー状態をリセット
   useEffect(() => {
@@ -42,6 +44,15 @@ export const GamePlay: React.FC<GamePlayProps> = ({
     }
     setHasError(false);
   }, [currentWord]);
+
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    } else {
+      setIsCountingDown(false);
+    }
+  }, [countdown]);
 
   // ゲームエリアがクリックされた時に入力フィールドにフォーカスする
   const handleGameAreaClick = () => {
@@ -146,6 +157,14 @@ export const GamePlay: React.FC<GamePlayProps> = ({
     );
   };
 
+  if (isCountingDown) {
+    return (
+      <div className="countdown">
+        <h1>{countdown}</h1>
+      </div>
+    );
+  }
+
   return (
     <div
       id="game"
@@ -193,7 +212,11 @@ export const GamePlay: React.FC<GamePlayProps> = ({
                 style={{
                   width: `${(wordTimeLeft / wordTimeLimit) * 100}%`,
                   backgroundColor:
-                    wordTimeLeft < wordTimeLimit * 0.3 ? "#e74c3c" : "#3498db",
+                    wordTimeLeft < wordTimeLimit * 0.2
+                      ? "#e74c3c"
+                      : wordTimeLeft < wordTimeLimit * 0.5
+                      ? "#f1c40f"
+                      : "#3498db",
                   // wordTimeLeftがwordTimeLimitに近い（新しい単語が表示された）場合はtransitionを無効化
                   transition:
                     Math.abs(wordTimeLeft - wordTimeLimit) < 0.1
