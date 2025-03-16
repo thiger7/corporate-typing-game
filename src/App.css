@@ -30,8 +30,6 @@ body {
   min-width: 600px;
   max-width: 90%;
   margin: auto;
-  max-height: 90vh;
-  overflow-y: auto;
 }
 
 #header {

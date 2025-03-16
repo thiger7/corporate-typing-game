@@ -3,7 +3,7 @@ import { Word, GameState, TypeStats } from "../types";
 import { words } from "../data/words";
 
 // ゲーム関連の定数
-const DEFAULT_TIME_LIMIT = 100; // 100秒制限
+const DEFAULT_TIME_LIMIT = 103; // 100秒制限
 const COMBO_THRESHOLD = 5; // コンボボーナスの閾値
 
 export const useTypingGame = (timeLimit = DEFAULT_TIME_LIMIT) => {

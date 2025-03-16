@@ -20,13 +20,18 @@ function App() {
     userInput,
     mistakeCount,
     timeLeft,
-    wordTimeLimit,    // 追加: 単語ごとの制限時間
-    wordTimeLeft,     // 追加: 単語の残り時間
+    wordTimeLimit, // 追加: 単語ごとの制限時間
+    wordTimeLeft, // 追加: 単語の残り時間
     score,
     isGameStarted,
     isGameOver,
     lastMistakeChar,
   } = gameState;
+
+  const onReturnToTitle = () => {
+    // Handle returning to the title screen
+    handleRetry(); // Reset the game state
+  };
 
   return (
     <div id="gameContainer">
@@ -44,8 +49,8 @@ function App() {
           userInput={userInput}
           mistakeCount={mistakeCount}
           timeLeft={timeLeft}
-          wordTimeLimit={wordTimeLimit}  // 追加
-          wordTimeLeft={wordTimeLeft}    // 追加
+          wordTimeLimit={wordTimeLimit} // 追加
+          wordTimeLeft={wordTimeLeft} // 追加
           score={score}
           combo={typeStats.combo}
           maxCombo={typeStats.maxCombo}
@@ -53,6 +58,7 @@ function App() {
           wordsCompleted={typeStats.wordsCompleted}
           lastMistakeChar={lastMistakeChar}
           onInputChange={handleInputChange}
+          onReturnToTitle={onReturnToTitle} // Pass the function as a prop
         />
       )}
 
@@ -63,6 +69,7 @@ function App() {
           totalQuestions={typeStats.wordsCompleted}
           typeStats={typeStats}
           onRetry={handleRetry}
+          onReturnToTitle={onReturnToTitle} // Pass the function as a prop
         />
       )}
     </div>

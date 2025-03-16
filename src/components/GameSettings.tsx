@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 interface GameSettingsProps {
   onStartGame: () => void;
 }
 
 export const GameSettings: React.FC<GameSettingsProps> = ({ onStartGame }) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === "Space") {
+        onStartGame();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onStartGame]);
+
   return (
     <div id="settings" className="card">
       <div className="container">

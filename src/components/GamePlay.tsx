@@ -15,6 +15,7 @@ interface GamePlayProps {
   wordTimeLimit?: number;
   wordTimeLeft?: number;
   onInputChange: (value: string) => void;
+  onReturnToTitle: () => void;
 }
 
 export const GamePlay: React.FC<GamePlayProps> = ({
@@ -30,6 +31,7 @@ export const GamePlay: React.FC<GamePlayProps> = ({
   wordTimeLimit = 5,
   wordTimeLeft,
   onInputChange,
+  onReturnToTitle,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const gameAreaRef = useRef<HTMLDivElement>(null);
@@ -53,6 +55,18 @@ export const GamePlay: React.FC<GamePlayProps> = ({
       setIsCountingDown(false);
     }
   }, [countdown]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === "Escape") {
+        onReturnToTitle();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onReturnToTitle]);
 
   // ゲームエリアがクリックされた時に入力フィールドにフォーカスする
   const handleGameAreaClick = () => {

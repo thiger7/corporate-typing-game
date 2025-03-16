@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TypeStats } from "../types";
 
 interface GameResultProps {
@@ -6,6 +6,7 @@ interface GameResultProps {
   totalQuestions: number;
   typeStats: TypeStats;
   onRetry: () => void;
+  onReturnToTitle: () => void;
 }
 
 export const GameResult: React.FC<GameResultProps> = ({
@@ -13,7 +14,22 @@ export const GameResult: React.FC<GameResultProps> = ({
   totalQuestions,
   typeStats,
   onRetry,
+  onReturnToTitle,
 }) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.code === "Space") {
+        onRetry();
+      } else if (event.code === "Escape") {
+        onReturnToTitle();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onRetry, onReturnToTitle]);
+
   return (
     <div id="endGame" className="card">
       <div className="container result-container">
@@ -23,7 +39,10 @@ export const GameResult: React.FC<GameResultProps> = ({
 
         <div className="total-score">
           <div className="score-label">YOUR SCORE</div>
-          <div className="score-value">{score}<span style={{fontSize: "0.5em"}}> 点</span></div>
+          <div className="score-value">
+            {score}
+            <span style={{ fontSize: "0.5em" }}> 点</span>
+          </div>
         </div>
 
         <div className="stats-container">
