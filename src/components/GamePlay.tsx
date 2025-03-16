@@ -26,14 +26,24 @@ export const GamePlay: React.FC<GamePlayProps> = ({
   wordsCompleted,
   onInputChange,
 }) => {
-  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  // 自動的にテキスト入力フィールドにフォーカスする
+  // ゲームエリア全体へのフォーカスを管理するref
+  const gameAreaRef = useRef<HTMLDivElement>(null);
+
+  // 自動的に入力フィールドにフォーカスする
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, [currentWord]);
+
+  // ゲームエリアがクリックされた時に入力フィールドにフォーカスする
+  const handleGameAreaClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   // 文字ごとの状態を計算
   const getCharacterStates = (): Array<"correct" | "incorrect" | "neutral"> => {
@@ -55,7 +65,12 @@ export const GamePlay: React.FC<GamePlayProps> = ({
   const characterStates = getCharacterStates();
 
   return (
-    <div id="game" className="card">
+    <div
+      id="game"
+      className="card"
+      ref={gameAreaRef}
+      onClick={handleGameAreaClick}
+      tabIndex={0}>
       <div className="game-header">
         <div className="timer" id="timer">
           {timeLeft}
@@ -77,15 +92,21 @@ export const GamePlay: React.FC<GamePlayProps> = ({
             </span>
           ))}
         </div>
-        <textarea
+
+        {/* 非表示の入力フィールド */}
+        <input
           ref={inputRef}
           id="typeInput"
-          className="type-input"
+          className="hidden-input"
           value={userInput}
           onChange={e => onInputChange(e.target.value)}
-          placeholder="ここにタイピングしてください"
           autoFocus
         />
+
+        <div className="typing-instruction">
+          キーボードで入力してください。入力中のテキストは上に表示されます。
+        </div>
+
         <div className="game-stats">
           <div id="score">スコア: {score}</div>
           <div id="completed">完了単語数: {wordsCompleted}</div>

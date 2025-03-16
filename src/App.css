@@ -127,9 +127,14 @@ body {
 }
 
 .type-display {
+  position: relative;
   margin-bottom: 1.2rem;
   margin-left: 0.8rem;
   font-size: 1.8rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  min-height: 3.5rem;
 }
 
 .type-input {
@@ -353,6 +358,26 @@ h2 {
 h3 {
   font-size: 1.8rem;
   color: #333;
+}
+
+/* 非表示の入力フィールド */
+.hidden-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* タイピングインストラクション */
+.typing-instruction {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
 }
 
 /* Mobile responsive adjustments */
