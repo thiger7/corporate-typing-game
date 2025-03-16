@@ -1,6 +1,7 @@
 export type Word = {
   japanese: string;
   roman: string;
+  alternatives?: string[];
 };
 
 export type GameState = {

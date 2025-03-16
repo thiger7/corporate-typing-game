@@ -1,175 +1,867 @@
 [
-  { "japanese": "製品", "roman": "seihin" },
-  { "japanese": "商品情報", "roman": "shouhinjouhou" },
-  { "japanese": "カゴ", "roman": "kago" },
-  { "japanese": "注文", "roman": "chuumon" },
-  { "japanese": "検索", "roman": "kensaku" },
-  { "japanese": "買い物", "roman": "kaimono" },
-  { "japanese": "購入", "roman": "kounyuu" },
-  { "japanese": "納付", "roman": "noufu" },
-  { "japanese": "送料", "roman": "souryou" },
-  { "japanese": "無料配送", "roman": "muryouhaisou" },
-  { "japanese": "値段", "roman": "nedan" },
-  { "japanese": "定価", "roman": "teika" },
-  { "japanese": "セール", "roman": "se-ru" },
-  { "japanese": "割引", "roman": "waribiki" },
-  { "japanese": "ポイント", "roman": "pointo" },
-  { "japanese": "レビュー", "roman": "rebyu-" },
-  { "japanese": "評価", "roman": "hyouka" },
-  { "japanese": "コメント", "roman": "komento" },
-  { "japanese": "おすすめ", "roman": "osusume" },
-  { "japanese": "新入荷", "roman": "shinnyuuka" },
-  { "japanese": "限定品", "roman": "genteihin" },
-  { "japanese": "企画", "roman": "kikaku" },
-  { "japanese": "セット", "roman": "setto" },
-  { "japanese": "特典料", "roman": "tokutsuryou" },
-  { "japanese": "ギフト", "roman": "gifuto" },
-  { "japanese": "ラッピング", "roman": "rappingu" },
-  { "japanese": "メール", "roman": "me-ru" },
-  { "japanese": "登録", "roman": "touroku" },
-  { "japanese": "会員", "roman": "kaiin" },
-  { "japanese": "ログイン", "roman": "rogu-in" },
-  { "japanese": "パスワード", "roman": "pasuwa-do" },
-  { "japanese": "エージェント", "roman": "e-jento" },
-  { "japanese": "かんたん検索", "roman": "kantankensaku" },
-  { "japanese": "詳細", "roman": "shousai" },
-  { "japanese": "イメージ", "roman": "ime-ji" },
-  { "japanese": "サイズ", "roman": "saizu" },
-  { "japanese": "色", "roman": "iro" },
-  { "japanese": "スペック", "roman": "supekku" },
-  { "japanese": "在庫", "roman": "zaiko" },
-  { "japanese": "確認", "roman": "kakunin" },
-  { "japanese": "支払い", "roman": "shiharai" },
-  { "japanese": "クレジットカード", "roman": "kurejittoka-do" },
-  { "japanese": "購入", "roman": "kounyuu" },
-  { "japanese": "部主", "roman": "bunushi" },
-  { "japanese": "返品", "roman": "henpin" },
-  { "japanese": "交換", "roman": "koukan" },
-  { "japanese": "保証", "roman": "hoshou" },
-  { "japanese": "アフィリエイト", "roman": "afirieito" },
-  { "japanese": "コミッション", "roman": "komisshon" },
-  { "japanese": "キーワード", "roman": "ki-wa-do" },
-  { "japanese": "ターゲティング", "roman": "ta-getingu" },
-  { "japanese": "コンバージョン", "roman": "konba-jon" },
-  { "japanese": "クリック", "roman": "kurikku" },
-  { "japanese": "インプレッション", "roman": "inpuresshon" },
-  { "japanese": "CTR", "roman": "ctr" },
-  { "japanese": "ビッド価格", "roman": "biddokakaku" },
-  { "japanese": "ウェブショッピング", "roman": "webushoppingu" },
-  { "japanese": "スマホ", "roman": "sumaho" },
-  { "japanese": "アプリ", "roman": "apuri" },
-  { "japanese": "フィード", "roman": "fi-do" },
-  { "japanese": "マーチャント", "roman": "ma-chanto" },
-  { "japanese": "カテゴリー", "roman": "kategori-" },
-  { "japanese": "フィルター", "roman": "firuta-" },
-  { "japanese": "ダイアリー", "roman": "daiari-" },
-  { "japanese": "クーポン", "roman": "ku-pon" },
-  { "japanese": "プロモーション", "roman": "puromo-shon" },
-  { "japanese": "カスタマー", "roman": "kasutama-" },
-  { "japanese": "サービス", "roman": "sa-bisu" },
-  { "japanese": "エクスポート", "roman": "ekusupo-to" },
-  { "japanese": "インポート", "roman": "inpo-to" },
-  { "japanese": "アップデート", "roman": "appude-to" },
-  { "japanese": "トラッキング", "roman": "torakkingu" },
-  { "japanese": "アクセス", "roman": "akusesu" },
-  { "japanese": "アナリティクス", "roman": "anaritiukusu" },
-  { "japanese": "コンバージョンレート", "roman": "konbajonre-to" },
-  { "japanese": "リターゲティング", "roman": "rita-getingu" },
-  { "japanese": "ショッピングリスト", "roman": "shoppingurisuto" },
-  { "japanese": "ピックアップ", "roman": "pikkuappu" },
-  { "japanese": "らくらく検索", "roman": "rakurakukensaku" },
-  { "japanese": "スマホ検索", "roman": "sumahokensaku" },
-  { "japanese": "アドワーズ", "roman": "adowa-zu" },
-  { "japanese": "商品リスト", "roman": "shouhinrisuto" },
-  { "japanese": "ディスプレイ広告", "roman": "disupureikoukoku" },
-  { "japanese": "スパム", "roman": "supamu" },
-  { "japanese": "商品比較", "roman": "shouhinhikaku" },
-  { "japanese": "データフィード", "roman": "de-tafi-do" },
-  { "japanese": "オンラインストア", "roman": "onrainsutoa" },
-  { "japanese": "配達", "roman": "haitatsu" },
-  { "japanese": "運送", "roman": "unsou" },
-  { "japanese": "梱包", "roman": "konpou" },
-  { "japanese": "問い合わせ", "roman": "toiawase" },
-  { "japanese": "キャンセル", "roman": "kyanseru" },
-  { "japanese": "決済", "roman": "kessai" },
-  { "japanese": "在庫切れ", "roman": "zaikogire" },
-  { "japanese": "予約注文", "roman": "yoyakuchuumon" },
-  { "japanese": "マイページ", "roman": "maipe-ji" },
-  { "japanese": "プライバシー", "roman": "puraibashi-" },
-  { "japanese": "ポリシー", "roman": "porishi-" },
-  { "japanese": "特定商取引法", "roman": "tokutei-shouhou-torihiki-hou" },
-  { "japanese": "デジタルコンテンツ", "roman": "dejitaru-kontentu" },
-  { "japanese": "メンバーシップ", "roman": "menba-shippu" },
-  { "japanese": "カスタマーレビュー", "roman": "kasutama-rebyu-" },
-  { "japanese": "商品説明", "roman": "shouhin-setumei" },
-  { "japanese": "トレンド商品", "roman": "torendo-shouhin" },
-  { "japanese": "お気に入り", "roman": "okiniiri" },
-  { "japanese": "ウィッシュリスト", "roman": "uisshurisuto" },
-  { "japanese": "新規会員登録", "roman": "shinki-kaiin-touroku" },
-  { "japanese": "会員特典", "roman": "kaiin-tokuten" },
-  { "japanese": "割引クーポン", "roman": "waribiki-ku-pon" },
-  { "japanese": "タイムセール", "roman": "taimu-se-ru" },
-  { "japanese": "期間限定", "roman": "kikan-gentei" },
-  { "japanese": "数量限定", "roman": "suuryou-gentei" },
-  { "japanese": "品切れ", "roman": "shinagire" },
-  { "japanese": "再入荷", "roman": "sainyuuka" },
-  { "japanese": "お届け日時", "roman": "otodoke-nichiji" },
-  { "japanese": "領収書", "roman": "ryoushuusho" },
-  { "japanese": "納品書", "roman": "nouninsho" },
-  { "japanese": "特別価格", "roman": "tokubetsu-kakaku" },
-  { "japanese": "セキュリティ", "roman": "sekyuriti" },
-  { "japanese": "認証", "roman": "ninsho" },
-  { "japanese": "出荷通知", "roman": "shukka-tsuuchi" },
-  { "japanese": "配送状況", "roman": "haisou-joukyou" },
-  { "japanese": "追跡番号", "roman": "tsuiseki-bangou" },
-  { "japanese": "キャッシュバック", "roman": "kyasshubakku" },
-  { "japanese": "支払い方法", "roman": "shiharai-houhou" },
-  { "japanese": "銀行振込", "roman": "ginkou-furikomi" },
-  { "japanese": "コンビニ決済", "roman": "konbini-kessai" },
-  { "japanese": "後払い", "roman": "atobarai" },
-  { "japanese": "翌日配送", "roman": "yokujitsu-haisou" },
-  { "japanese": "即日発送", "roman": "sokujitsu-hassou" },
-  { "japanese": "海外発送", "roman": "kaigai-hassou" },
-  { "japanese": "国際配送", "roman": "kokusai-haisou" },
-  { "japanese": "送料無料", "roman": "souryou-muryou" },
-  { "japanese": "カスタマーサポート", "roman": "kasutama-sapo-to" },
-  { "japanese": "よくある質問", "roman": "yokuaru-shitsumon" },
-  { "japanese": "FAQ", "roman": "faq" },
-  { "japanese": "ヘルプセンター", "roman": "herupu-senta-" },
-  { "japanese": "ショッピングガイド", "roman": "shoppingu-gaido" },
-  { "japanese": "ブランド", "roman": "burando" },
-  { "japanese": "型番", "roman": "kataban" },
-  { "japanese": "製造元", "roman": "seizougen" },
-  { "japanese": "メーカー", "roman": "me-ka-" },
-  { "japanese": "原産国", "roman": "gensankoku" },
-  { "japanese": "素材", "roman": "sozai" },
-  { "japanese": "成分表示", "roman": "seibun-hyouji" },
-  { "japanese": "使用方法", "roman": "shiyou-houhou" },
-  { "japanese": "注意事項", "roman": "chuui-jikou" },
-  { "japanese": "保証期間", "roman": "hoshou-kikan" },
-  { "japanese": "修理", "roman": "shuuri" },
-  { "japanese": "メンテナンス", "roman": "mentenansu" },
-  { "japanese": "ユーザーレビュー", "roman": "yu-za-rebyu-" },
-  { "japanese": "口コミ", "roman": "kuchikomi" },
-  { "japanese": "評判", "roman": "hyouban" },
-  { "japanese": "ランキング", "roman": "rankingu" },
-  { "japanese": "人気商品", "roman": "ninki-shouhin" },
-  { "japanese": "オススメ商品", "roman": "osusume-shouhin" },
-  { "japanese": "関連商品", "roman": "kanren-shouhin" },
-  { "japanese": "セット販売", "roman": "setto-hanbai" },
-  { "japanese": "バンドル", "roman": "bandoru" },
-  { "japanese": "福袋", "roman": "fukubukuro" },
-  { "japanese": "アウトレット", "roman": "autoretto" },
-  { "japanese": "中古品", "roman": "chuukohin" },
-  { "japanese": "新品", "roman": "shinpin" },
-  { "japanese": "展示品", "roman": "tenjhin" },
-  { "japanese": "予約開始", "roman": "yoyaku-kaishi" },
-  { "japanese": "販売終了", "roman": "hanbai-shuuryou" },
-  { "japanese": "返金", "roman": "henkin" },
-  { "japanese": "割引率", "roman": "waribiki-ritsu" },
-  { "japanese": "電子マネー", "roman": "denshi-mane-" },
-  { "japanese": "QRコード決済", "roman": "qr-ko-do-kessai" },
-  { "japanese": "スマホ決済", "roman": "sumaho-kessai" },
-  { "japanese": "代金引換", "roman": "daikin-hikikae" },
-  { "japanese": "分割払い", "roman": "bunkatsu-barai" }
+  {
+    "japanese": "製品",
+    "roman": "seihin",
+    "alternatives": []
+  },
+  {
+    "japanese": "商品情報",
+    "roman": "shouhinjouhou",
+    "alternatives": ["syouhinjouhou", "shouhinzyouhou"]
+  },
+  {
+    "japanese": "カゴ",
+    "roman": "kago",
+    "alternatives": []
+  },
+  {
+    "japanese": "注文",
+    "roman": "chuumon",
+    "alternatives": ["tyuumon"]
+  },
+  {
+    "japanese": "検索",
+    "roman": "kensaku",
+    "alternatives": []
+  },
+  {
+    "japanese": "買い物",
+    "roman": "kaimono",
+    "alternatives": []
+  },
+  {
+    "japanese": "購入",
+    "roman": "kounyuu",
+    "alternatives": []
+  },
+  {
+    "japanese": "納付",
+    "roman": "noufu",
+    "alternatives": ["nouhu"]
+  },
+  {
+    "japanese": "送料",
+    "roman": "souryou",
+    "alternatives": []
+  },
+  {
+    "japanese": "無料配送",
+    "roman": "muryouhaisou",
+    "alternatives": []
+  },
+  {
+    "japanese": "値段",
+    "roman": "nedan",
+    "alternatives": []
+  },
+  {
+    "japanese": "定価",
+    "roman": "teika",
+    "alternatives": []
+  },
+  {
+    "japanese": "セール",
+    "roman": "se-ru",
+    "alternatives": ["seeru"]
+  },
+  {
+    "japanese": "割引",
+    "roman": "waribiki",
+    "alternatives": []
+  },
+  {
+    "japanese": "ポイント",
+    "roman": "pointo",
+    "alternatives": []
+  },
+  {
+    "japanese": "レビュー",
+    "roman": "rebyu-",
+    "alternatives": ["rebyuu"]
+  },
+  {
+    "japanese": "評価",
+    "roman": "hyouka",
+    "alternatives": []
+  },
+  {
+    "japanese": "コメント",
+    "roman": "komento",
+    "alternatives": []
+  },
+  {
+    "japanese": "おすすめ",
+    "roman": "osusume",
+    "alternatives": []
+  },
+  {
+    "japanese": "新入荷",
+    "roman": "shinnyuuka",
+    "alternatives": []
+  },
+  {
+    "japanese": "限定品",
+    "roman": "genteihin",
+    "alternatives": []
+  },
+  {
+    "japanese": "企画",
+    "roman": "kikaku",
+    "alternatives": []
+  },
+  {
+    "japanese": "セット",
+    "roman": "setto",
+    "alternatives": []
+  },
+  {
+    "japanese": "特典料",
+    "roman": "tokutsuryou",
+    "alternatives": ["tokutsuryou"]
+  },
+  {
+    "japanese": "ギフト",
+    "roman": "gifuto",
+    "alternatives": []
+  },
+  {
+    "japanese": "ラッピング",
+    "roman": "rappingu",
+    "alternatives": []
+  },
+  {
+    "japanese": "メール",
+    "roman": "me-ru",
+    "alternatives": ["meeru"]
+  },
+  {
+    "japanese": "登録",
+    "roman": "touroku",
+    "alternatives": []
+  },
+  {
+    "japanese": "会員",
+    "roman": "kaiin",
+    "alternatives": []
+  },
+  {
+    "japanese": "ログイン",
+    "roman": "roguin",
+    "alternatives": []
+  },
+  {
+    "japanese": "パスワード",
+    "roman": "pasuwa-do",
+    "alternatives": ["pasuwaado"]
+  },
+  {
+    "japanese": "エージェント",
+    "roman": "e-jento",
+    "alternatives": ["eejento", "e-zento", "eezento"]
+  },
+  {
+    "japanese": "かんたん検索",
+    "roman": "kantankensaku",
+    "alternatives": []
+  },
+  {
+    "japanese": "詳細",
+    "roman": "shousai",
+    "alternatives": ["syousai"]
+  },
+  {
+    "japanese": "イメージ",
+    "roman": "ime-ji",
+    "alternatives": ["imeeji", "ime-zi", "imeezi"]
+  },
+  {
+    "japanese": "サイズ",
+    "roman": "saizu",
+    "alternatives": []
+  },
+  {
+    "japanese": "色",
+    "roman": "iro",
+    "alternatives": []
+  },
+  {
+    "japanese": "スペック",
+    "roman": "supekku",
+    "alternatives": []
+  },
+  {
+    "japanese": "在庫",
+    "roman": "zaiko",
+    "alternatives": []
+  },
+  {
+    "japanese": "確認",
+    "roman": "kakunin",
+    "alternatives": []
+  },
+  {
+    "japanese": "支払い",
+    "roman": "shiharai",
+    "alternatives": ["siharai"]
+  },
+  {
+    "japanese": "クレジットカード",
+    "roman": "kurejittoka-do",
+    "alternatives": ["kurejittokaado", "kurezittoka-do", "kurezittokaado"]
+  },
+  {
+    "japanese": "購入",
+    "roman": "kounyuu",
+    "alternatives": []
+  },
+  {
+    "japanese": "部主",
+    "roman": "bunushi",
+    "alternatives": []
+  },
+  {
+    "japanese": "返品",
+    "roman": "henpin",
+    "alternatives": []
+  },
+  {
+    "japanese": "交換",
+    "roman": "koukan",
+    "alternatives": []
+  },
+  {
+    "japanese": "保証",
+    "roman": "hoshou",
+    "alternatives": ["hosyou"]
+  },
+  {
+    "japanese": "アフィリエイト",
+    "roman": "afirieito",
+    "alternatives": []
+  },
+  {
+    "japanese": "コミッション",
+    "roman": "komisshon",
+    "alternatives": []
+  },
+  {
+    "japanese": "キーワード",
+    "roman": "ki-wa-do",
+    "alternatives": ["kiiwaado"]
+  },
+  {
+    "japanese": "ターゲティング",
+    "roman": "ta-getingu",
+    "alternatives": ["taagetingu"]
+  },
+  {
+    "japanese": "コンバージョン",
+    "roman": "konba-jon",
+    "alternatives": ["konbaajon"]
+  },
+  {
+    "japanese": "クリック",
+    "roman": "kurikku",
+    "alternatives": []
+  },
+  {
+    "japanese": "インプレッション",
+    "roman": "inpuresshon",
+    "alternatives": []
+  },
+  {
+    "japanese": "CTR",
+    "roman": "ctr",
+    "alternatives": []
+  },
+  {
+    "japanese": "ビッド価格",
+    "roman": "biddokakaku",
+    "alternatives": []
+  },
+  {
+    "japanese": "ウェブショッピング",
+    "roman": "webushoppingu",
+    "alternatives": []
+  },
+  {
+    "japanese": "スマホ",
+    "roman": "sumaho",
+    "alternatives": []
+  },
+  {
+    "japanese": "アプリ",
+    "roman": "apuri",
+    "alternatives": []
+  },
+  {
+    "japanese": "フィード",
+    "roman": "fi-do",
+    "alternatives": ["fiido"]
+  },
+  {
+    "japanese": "マーチャント",
+    "roman": "ma-chanto",
+    "alternatives": ["maachanto", "ma-tyanto", "maatyanto"]
+  },
+  {
+    "japanese": "カテゴリー",
+    "roman": "kategori-",
+    "alternatives": ["kategorii"]
+  },
+  {
+    "japanese": "フィルター",
+    "roman": "firuta-",
+    "alternatives": ["firutaa"]
+  },
+  {
+    "japanese": "ダイアリー",
+    "roman": "daiari-",
+    "alternatives": ["daiarii"]
+  },
+  {
+    "japanese": "クーポン",
+    "roman": "ku-pon",
+    "alternatives": ["kuupon"]
+  },
+  {
+    "japanese": "プロモーション",
+    "roman": "puromo-shon",
+    "alternatives": ["puromoosyon", "puromooson"]
+  },
+  {
+    "japanese": "カスタマー",
+    "roman": "kasutama-",
+    "alternatives": ["kasutamaa"]
+  },
+  {
+    "japanese": "サービス",
+    "roman": "sa-bisu",
+    "alternatives": ["saabisu"]
+  },
+  {
+    "japanese": "エクスポート",
+    "roman": "ekusupo-to",
+    "alternatives": ["ekusupooto"]
+  },
+  {
+    "japanese": "インポート",
+    "roman": "inpo-to",
+    "alternatives": ["inpooto"]
+  },
+  {
+    "japanese": "アップデート",
+    "roman": "appude-to",
+    "alternatives": ["appudeeto"]
+  },
+  {
+    "japanese": "トラッキング",
+    "roman": "torakkingu",
+    "alternatives": []
+  },
+  {
+    "japanese": "アクセス",
+    "roman": "akusesu",
+    "alternatives": []
+  },
+  {
+    "japanese": "アナリティクス",
+    "roman": "anaritiukusu",
+    "alternatives": []
+  },
+  {
+    "japanese": "コンバージョンレート",
+    "roman": "konbajonre-to",
+    "alternatives": ["konbajonreeto"]
+  },
+  {
+    "japanese": "リターゲティング",
+    "roman": "rita-getingu",
+    "alternatives": ["ritaagetingu"]
+  },
+  {
+    "japanese": "ショッピングリスト",
+    "roman": "shoppingurisuto",
+    "alternatives": ["syoppingurisuto"]
+  },
+  {
+    "japanese": "ピックアップ",
+    "roman": "pikkuappu",
+    "alternatives": []
+  },
+  {
+    "japanese": "らくらく検索",
+    "roman": "rakurakukensaku",
+    "alternatives": []
+  },
+  {
+    "japanese": "スマホ検索",
+    "roman": "sumahokensaku",
+    "alternatives": []
+  },
+  {
+    "japanese": "アドワーズ",
+    "roman": "adowa-zu",
+    "alternatives": ["adowaazu"]
+  },
+  {
+    "japanese": "商品リスト",
+    "roman": "shouhinrisuto",
+    "alternatives": ["syouhinrisuto"]
+  },
+  {
+    "japanese": "ディスプレイ広告",
+    "roman": "disupureikoukoku",
+    "alternatives": []
+  },
+  {
+    "japanese": "スパム",
+    "roman": "supamu",
+    "alternatives": []
+  },
+  {
+    "japanese": "商品比較",
+    "roman": "shouhinhikaku",
+    "alternatives": ["syouhinhikaku"]
+  },
+  {
+    "japanese": "データフィード",
+    "roman": "de-tafi-do",
+    "alternatives": ["deetafiido"]
+  },
+  {
+    "japanese": "オンラインストア",
+    "roman": "onrainsutoa",
+    "alternatives": []
+  },
+  {
+    "japanese": "配達",
+    "roman": "haitatsu",
+    "alternatives": []
+  },
+  {
+    "japanese": "運送",
+    "roman": "unsou",
+    "alternatives": []
+  },
+  {
+    "japanese": "梱包",
+    "roman": "konpou",
+    "alternatives": []
+  },
+  {
+    "japanese": "問い合わせ",
+    "roman": "toiawase",
+    "alternatives": []
+  },
+  {
+    "japanese": "キャンセル",
+    "roman": "kyanseru",
+    "alternatives": []
+  },
+  {
+    "japanese": "決済",
+    "roman": "kessai",
+    "alternatives": []
+  },
+  {
+    "japanese": "在庫切れ",
+    "roman": "zaikogire",
+    "alternatives": []
+  },
+  {
+    "japanese": "予約注文",
+    "roman": "yoyakuchuumon",
+    "alternatives": ["yoyakutyuumon"]
+  },
+  {
+    "japanese": "マイページ",
+    "roman": "maipe-ji",
+    "alternatives": ["maipeeji", "maipe-zi"]
+  },
+  {
+    "japanese": "プライバシー",
+    "roman": "puraibashi-",
+    "alternatives": ["puraibashii"]
+  },
+  {
+    "japanese": "ポリシー",
+    "roman": "porishi-",
+    "alternatives": ["porishii"]
+  },
+  {
+    "japanese": "特定商取引法",
+    "roman": "tokuteishouhoutorihikihou",
+    "alternatives": ["tokuteisyouhoutorihikihou"]
+  },
+  {
+    "japanese": "デジタルコンテンツ",
+    "roman": "dejitarukontentu",
+    "alternatives": ["dezitarukontentsu", "dezitarukontentu"]
+  },
+  {
+    "japanese": "メンバーシップ",
+    "roman": "menba-shippu",
+    "alternatives": ["menbashippu"]
+  },
+  {
+    "japanese": "カスタマーレビュー",
+    "roman": "kasutama-rebyu-",
+    "alternatives": ["kasutamaarebyu-", "kasutamaarebyuu"]
+  },
+  {
+    "japanese": "商品説明",
+    "roman": "shouhinsetumei",
+    "alternatives": ["syouhinsetumei", "shouhinsetumei"]
+  },
+  {
+    "japanese": "トレンド商品",
+    "roman": "torendoshouhin",
+    "alternatives": ["torendosyouhin"]
+  },
+  {
+    "japanese": "お気に入り",
+    "roman": "okiniiri",
+    "alternatives": []
+  },
+  {
+    "japanese": "ウィッシュリスト",
+    "roman": "uisshurisuto",
+    "alternatives": []
+  },
+  {
+    "japanese": "新規会員登録",
+    "roman": "shinkikaiintouroku",
+    "alternatives": ["sinkikaiintouroku"]
+  },
+  {
+    "japanese": "会員特典",
+    "roman": "kaiintokuten",
+    "alternatives": []
+  },
+  {
+    "japanese": "割引クーポン",
+    "roman": "waribikiku-pon",
+    "alternatives": ["waribikikuupon"]
+  },
+  {
+    "japanese": "タイムセール",
+    "roman": "taimuse-ru",
+    "alternatives": ["taimuseeru"]
+  },
+  {
+    "japanese": "期間限定",
+    "roman": "kikangentei",
+    "alternatives": []
+  },
+  {
+    "japanese": "数量限定",
+    "roman": "suuryougentei",
+    "alternatives": []
+  },
+  {
+    "japanese": "品切れ",
+    "roman": "shinagire",
+    "alternatives": []
+  },
+  {
+    "japanese": "再入荷",
+    "roman": "sainyuuka",
+    "alternatives": []
+  },
+  {
+    "japanese": "お届け日時",
+    "roman": "otodokenichiji",
+    "alternatives": ["otodokenitiji", "otodokenitizi"]
+  },
+  {
+    "japanese": "領収書",
+    "roman": "ryoushuusho",
+    "alternatives": ["ryousyuusyo"]
+  },
+  {
+    "japanese": "納品書",
+    "roman": "nouninsho",
+    "alternatives": ["nouninsyo"]
+  },
+  {
+    "japanese": "特別価格",
+    "roman": "tokubetsukakaku",
+    "alternatives": ["tokubetukakaku"]
+  },
+  {
+    "japanese": "セキュリティ",
+    "roman": "sekyuriti",
+    "alternatives": []
+  },
+  {
+    "japanese": "認証",
+    "roman": "ninsho",
+    "alternatives": ["ninsyo"]
+  },
+  {
+    "japanese": "出荷通知",
+    "roman": "shukkatsuuchi",
+    "alternatives": ["syukkatuuti"]
+  },
+  {
+    "japanese": "配送状況",
+    "roman": "haisoujoukyou",
+    "alternatives": ["haisoujoukyou"]
+  },
+  {
+    "japanese": "追跡番号",
+    "roman": "tsuisekibangou",
+    "alternatives": ["tuisekibangou"]
+  },
+  {
+    "japanese": "キャッシュバック",
+    "roman": "kyasshubakku",
+    "alternatives": []
+  },
+  {
+    "japanese": "支払い方法",
+    "roman": "shiharaihouhou",
+    "alternatives": ["siharaihouhou"]
+  },
+  {
+    "japanese": "銀行振込",
+    "roman": "ginkoufurikomi",
+    "alternatives": []
+  },
+  {
+    "japanese": "コンビニ決済",
+    "roman": "konbinikessai",
+    "alternatives": []
+  },
+  {
+    "japanese": "後払い",
+    "roman": "atobarai",
+    "alternatives": []
+  },
+  {
+    "japanese": "翌日配送",
+    "roman": "yokujitsuhaisou",
+    "alternatives": ["yokuzituhaisou", "yokuzitsuhaisou"]
+  },
+  {
+    "japanese": "即日発送",
+    "roman": "sokujitsuhassou",
+    "alternatives": ["sokujituhassou", "sokuzituhassou"]
+  },
+  {
+    "japanese": "海外発送",
+    "roman": "kaigaihassou",
+    "alternatives": ["kaigaihassou"]
+  },
+  {
+    "japanese": "国際配送",
+    "roman": "kokusaihaisou",
+    "alternatives": []
+  },
+  {
+    "japanese": "送料無料",
+    "roman": "souryoumuryou",
+    "alternatives": []
+  },
+  {
+    "japanese": "カスタマーサポート",
+    "roman": "kasutama-sapo-to",
+    "alternatives": ["kasutamaasapooto"]
+  },
+  {
+    "japanese": "よくある質問",
+    "roman": "yokuarushitsumon",
+    "alternatives": ["yokuarusitumon"]
+  },
+  {
+    "japanese": "FAQ",
+    "roman": "faq",
+    "alternatives": []
+  },
+  {
+    "japanese": "ヘルプセンター",
+    "roman": "herupusenta-",
+    "alternatives": ["herupusentaa"]
+  },
+  {
+    "japanese": "ショッピングガイド",
+    "roman": "shoppingugaido",
+    "alternatives": ["syoppingugaido"]
+  },
+  {
+    "japanese": "ブランド",
+    "roman": "burando",
+    "alternatives": []
+  },
+  {
+    "japanese": "型番",
+    "roman": "kataban",
+    "alternatives": []
+  },
+  {
+    "japanese": "製造元",
+    "roman": "seizougen",
+    "alternatives": []
+  },
+  {
+    "japanese": "メーカー",
+    "roman": "me-ka-",
+    "alternatives": ["meekaa"]
+  },
+  {
+    "japanese": "原産国",
+    "roman": "gensankoku",
+    "alternatives": []
+  },
+  {
+    "japanese": "素材",
+    "roman": "sozai",
+    "alternatives": []
+  },
+  {
+    "japanese": "成分表示",
+    "roman": "seibunhyouji",
+    "alternatives": ["seibunhyouzi"]
+  },
+  {
+    "japanese": "使用方法",
+    "roman": "shiyouhouhou",
+    "alternatives": ["siyouhouhou"]
+  },
+  {
+    "japanese": "注意事項",
+    "roman": "chuuijikou",
+    "alternatives": ["tyuuijikou", "chuuizikou"]
+  },
+  {
+    "japanese": "保証期間",
+    "roman": "hoshoukikan",
+    "alternatives": ["hosyoukikan"]
+  },
+  {
+    "japanese": "修理",
+    "roman": "shuuri",
+    "alternatives": ["syuuri"]
+  },
+  {
+    "japanese": "メンテナンス",
+    "roman": "mentenansu",
+    "alternatives": []
+  },
+  {
+    "japanese": "ユーザーレビュー",
+    "roman": "yu-za-rebyu-",
+    "alternatives": ["yuuzaarebyuu"]
+  },
+  {
+    "japanese": "口コミ",
+    "roman": "kuchikomi",
+    "alternatives": []
+  },
+  {
+    "japanese": "評判",
+    "roman": "hyouban",
+    "alternatives": ["hyouban"]
+  },
+  {
+    "japanese": "ランキング",
+    "roman": "rankingu",
+    "alternatives": []
+  },
+  {
+    "japanese": "人気商品",
+    "roman": "ninkishouhin",
+    "alternatives": ["ninkisyouhin"]
+  },
+  {
+    "japanese": "オススメ商品",
+    "roman": "osusumeshouhin",
+    "alternatives": ["osusumesyouhin"]
+  },
+  {
+    "japanese": "関連商品",
+    "roman": "kanrenshouhin",
+    "alternatives": ["kanrensyouhin"]
+  },
+  {
+    "japanese": "セット販売",
+    "roman": "settohanbai",
+    "alternatives": []
+  },
+  {
+    "japanese": "バンドル",
+    "roman": "bandoru",
+    "alternatives": []
+  },
+  {
+    "japanese": "福袋",
+    "roman": "fukubukuro",
+    "alternatives": []
+  },
+  {
+    "japanese": "アウトレット",
+    "roman": "autoretto",
+    "alternatives": []
+  },
+  {
+    "japanese": "中古品",
+    "roman": "chuukohin",
+    "alternatives": ["tyuukohin"]
+  },
+  {
+    "japanese": "新品",
+    "roman": "shinpin",
+    "alternatives": ["sinpin"]
+  },
+  {
+    "japanese": "展示品",
+    "roman": "tenjihin",
+    "alternatives": ["tenzijin"]
+  },
+  {
+    "japanese": "予約開始",
+    "roman": "yoyakukaishi",
+    "alternatives": []
+  },
+  {
+    "japanese": "販売終了",
+    "roman": "hanbaishuuryou",
+    "alternatives": ["hanbaishuuryou"]
+  },
+  {
+    "japanese": "返金",
+    "roman": "henkin",
+    "alternatives": []
+  },
+  {
+    "japanese": "割引率",
+    "roman": "waribikiritsu",
+    "alternatives": []
+  },
+  {
+    "japanese": "電子マネー",
+    "roman": "denshimane-",
+    "alternatives": ["denshimanee"]
+  },
+  {
+    "japanese": "QRコード決済",
+    "roman": "qrko-dokessai",
+    "alternatives": ["qrkoodokessai"]
+  },
+  {
+    "japanese": "スマホ決済",
+    "roman": "sumahokessai",
+    "alternatives": []
+  },
+  {
+    "japanese": "代金引換",
+    "roman": "daikinhikikae",
+    "alternatives": []
+  },
+  {
+    "japanese": "分割払い",
+    "roman": "bunkatsubarai",
+    "alternatives": []
+  }
 ]

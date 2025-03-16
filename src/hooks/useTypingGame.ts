@@ -384,121 +384,145 @@ export const useTypingGame = (timeLimit = DEFAULT_TIME_LIMIT) => {
   const lastCorrectCharRef = useRef<number>(-1);
 
   // ユーザーの入力を処理する関数
-  const handleInputChange = useCallback(
-    (value: string) => {
-      // 前回の入力値と新しい入力値の差分を取得
-      const prevInputLength = gameState.userInput.length;
-      const newInput = value.slice(prevInputLength);
+  // useTypingGame.ts の handleInputChange 関数を修正
 
-      // 新しい文字が入力されていない場合は処理しない
-      if (newInput.length === 0) {
-        return;
-      }
+const handleInputChange = useCallback(
+  (value: string) => {
+    // 前回の入力値と新しい入力値の差分を取得
+    const prevInputLength = gameState.userInput.length;
+    const newInput = value.slice(prevInputLength);
 
-      // 新しい文字が一度に複数入力された場合は、一文字ずつ処理する
-      // 最初の一文字だけを処理する
-      const newChar = newInput[0];
+    // 新しい文字が入力されていない場合は処理しない
+    if (newInput.length === 0) {
+      return;
+    }
 
-      // 正しい次の文字かどうかをチェック
-      const nextCharIndex = gameState.userInput.length;
-      const expectedChar = gameState.currentWord.roman[nextCharIndex];
+    // 新しい文字が一度に複数入力された場合は、一文字ずつ処理する
+    // 最初の一文字だけを処理する
+    const newChar = newInput[0];
 
-      // 期待される文字と一致するかチェック
-      if (expectedChar && newChar === expectedChar) {
-        // 正しい入力の場合：タイプ音を再生
-        playSound("type");
+    // 正しい次の文字かどうかをチェック
+    const nextCharIndex = gameState.userInput.length;
+    const expectedChar = gameState.currentWord.roman[nextCharIndex];
 
-        // 正しく入力された文字の最後のインデックスを更新
-        lastCorrectCharRef.current = nextCharIndex;
-
-        // タイプ統計を更新
-        setTypeStats(prev => {
-          const newCombo = prev.combo + 1;
-          const newMaxCombo = Math.max(prev.maxCombo, newCombo);
-
-          return {
-            ...prev,
-            totalTyped: prev.totalTyped + 1,
-            correctTyped: prev.correctTyped + 1,
-            combo: newCombo,
-            maxCombo: newMaxCombo,
-            accuracy: Math.round(
-              ((prev.correctTyped + 1) / (prev.totalTyped + 1)) * 100,
-            ),
-          };
-        });
-
-        // ゲーム状態を更新（正しい入力のみを反映）
-        const newUserInput = gameState.userInput + newChar;
-        setGameState(prev => ({
-          ...prev,
-          userInput: newUserInput,
-          mistakeCount: prev.mistakeCount,
-          lastMistakeChar: "",
-        }));
-
-        // 単語を完全に入力できたかチェック
-        if (newUserInput.length === gameState.currentWord.roman.length) {
-          // 正解音を鳴らす
-          playSound("correct");
-          
-          // 単語タイマーをクリア
-          if (wordTimerIntervalRef.current) {
-            clearInterval(wordTimerIntervalRef.current);
-            wordTimerIntervalRef.current = null;
+    // 入力が正しいかどうかのフラグ
+    let isCorrectInput = false;
+    
+    // 1. 基本のroman文字列と一致するかチェック
+    if (expectedChar && newChar === expectedChar) {
+      isCorrectInput = true;
+    } 
+    // 2. 代替入力パターンと一致するかチェック
+    else if (gameState.currentWord.alternatives && gameState.currentWord.alternatives.length > 0) {
+      // 各代替パターンをチェック
+      for (const alternative of gameState.currentWord.alternatives) {
+        // 代替パターンの長さが十分あるか確認
+        if (alternative.length > nextCharIndex) {
+          // 代替パターンの対応する位置の文字と一致するか
+          if (alternative[nextCharIndex] === newChar) {
+            isCorrectInput = true;
+            break;
           }
-
-          // 単語完了のステータスを更新
-          setTypeStats(prev => ({
-            ...prev,
-            wordsCompleted: prev.wordsCompleted + 1,
-          }));
-
-          // 次の問題を表示
-          setTimeout(() => {
-            setGameState(state => ({
-              ...state,
-              currentWord: getRandomWord(words),
-              userInput: "",
-              mistakeCount: 0,
-              lastMistakeChar: "",
-            }));
-
-            // リファレンスをリセット
-            lastCorrectCharRef.current = -1;
-            prevMistakesRef.current = {};
-          }, 300);
         }
-      } else {
-        // 間違い音を鳴らす
-        playSound("wrong");
+      }
+    }
 
-        // ミスカウントを増やす
-        setGameState(prev => ({
-          ...prev,
-          mistakeCount: prev.mistakeCount + 1,
-          lastMistakeChar: newChar,
-        }));
+    // 期待される文字と一致するかチェック
+    if (isCorrectInput) {
+      // 正しい入力の場合：タイプ音を再生
+      playSound("type");
 
-        // タイプ統計を更新
-        setTypeStats(prev => ({
+      // 正しく入力された文字の最後のインデックスを更新
+      lastCorrectCharRef.current = nextCharIndex;
+
+      // タイプ統計を更新
+      setTypeStats(prev => {
+        const newCombo = prev.combo + 1;
+        const newMaxCombo = Math.max(prev.maxCombo, newCombo);
+
+        return {
           ...prev,
           totalTyped: prev.totalTyped + 1,
-          mistakeTyped: prev.mistakeTyped + 1,
-          combo: 0, // コンボをリセット
+          correctTyped: prev.correctTyped + 1,
+          combo: newCombo,
+          maxCombo: newMaxCombo,
           accuracy: Math.round(
-            (prev.correctTyped / (prev.totalTyped + 1)) * 100,
+            ((prev.correctTyped + 1) / (prev.totalTyped + 1)) * 100,
           ),
+        };
+      });
+
+      // ゲーム状態を更新（正しい入力のみを反映）
+      const newUserInput = gameState.userInput + newChar;
+      setGameState(prev => ({
+        ...prev,
+        userInput: newUserInput,
+        mistakeCount: prev.mistakeCount,
+        lastMistakeChar: "",
+      }));
+
+      // 単語を完全に入力できたかチェック
+      if (newUserInput.length === gameState.currentWord.roman.length) {
+        // 正解音を鳴らす
+        playSound("correct");
+
+        // 単語タイマーをクリア
+        if (wordTimerIntervalRef.current) {
+          clearInterval(wordTimerIntervalRef.current);
+          wordTimerIntervalRef.current = null;
+        }
+
+        // 単語完了のステータスを更新
+        setTypeStats(prev => ({
+          ...prev,
+          wordsCompleted: prev.wordsCompleted + 1,
         }));
+
+        // 次の問題を表示
+        setTimeout(() => {
+          setGameState(state => ({
+            ...state,
+            currentWord: getRandomWord(words),
+            userInput: "",
+            mistakeCount: 0,
+            lastMistakeChar: "",
+          }));
+
+          // リファレンスをリセット
+          lastCorrectCharRef.current = -1;
+          prevMistakesRef.current = {};
+        }, 300);
       }
-    },
-    [
-      gameState.userInput,
-      gameState.currentWord.roman,
-      getRandomWord,
-      playSound,
-    ],
-  );
+    } else {
+      // 間違い音を鳴らす
+      playSound("wrong");
+
+      // ミスカウントを増やす
+      setGameState(prev => ({
+        ...prev,
+        mistakeCount: prev.mistakeCount + 1,
+        lastMistakeChar: newChar,
+      }));
+
+      // タイプ統計を更新
+      setTypeStats(prev => ({
+        ...prev,
+        totalTyped: prev.totalTyped + 1,
+        mistakeTyped: prev.mistakeTyped + 1,
+        combo: 0, // コンボをリセット
+        accuracy: Math.round(
+          (prev.correctTyped / (prev.totalTyped + 1)) * 100,
+        ),
+      }));
+    }
+  },
+  [
+    gameState.userInput,
+    gameState.currentWord,
+    getRandomWord,
+    playSound,
+  ],
+);
 
   // 単語が変わったとき、または最初の単語が表示されたときにタイマーを開始
   useEffect(() => {
