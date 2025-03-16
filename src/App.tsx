@@ -23,6 +23,7 @@ function App() {
     score,
     isGameStarted,
     isGameOver,
+    lastMistakeChar, // 追加: 最後に間違えた文字
   } = gameState;
 
   return (
@@ -46,6 +47,7 @@ function App() {
           maxCombo={typeStats.maxCombo}
           accuracy={typeStats.accuracy}
           wordsCompleted={typeStats.wordsCompleted}
+          lastMistakeChar={lastMistakeChar} // 追加
           onInputChange={handleInputChange}
         />
       )}

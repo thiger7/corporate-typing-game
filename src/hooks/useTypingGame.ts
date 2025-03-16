@@ -308,38 +308,33 @@ export const useTypingGame = (timeLimit = DEFAULT_TIME_LIMIT) => {
       // 前回の入力値と新しい入力値の差分を取得
       const prevInputLength = gameState.userInput.length;
       const newInput = value.slice(prevInputLength);
-
+  
       // 新しい文字が入力されていない場合は処理しない
       if (newInput.length === 0) {
         return;
       }
-
+  
       // 新しい文字が一度に複数入力された場合は、一文字ずつ処理する
       // 最初の一文字だけを処理する
       const newChar = newInput[0];
-
+  
       // 正しい次の文字かどうかをチェック
       const nextCharIndex = gameState.userInput.length;
       const expectedChar = gameState.currentWord.roman[nextCharIndex];
-
+  
       // 期待される文字と一致するかチェック
       if (expectedChar && newChar === expectedChar) {
         // 正しい入力の場合：タイプ音を再生
         playSound("type");
-
+  
         // 正しく入力された文字の最後のインデックスを更新
         lastCorrectCharRef.current = nextCharIndex;
-
+  
         // タイプ統計を更新
         setTypeStats(prev => {
           const newCombo = prev.combo + 1;
           const newMaxCombo = Math.max(prev.maxCombo, newCombo);
-
-          // コンボ閾値を超えたらコンボ音を鳴らす
-          if (newCombo > 0 && newCombo % COMBO_THRESHOLD === 0) {
-            playSound("combo");
-          }
-
+  
           return {
             ...prev,
             totalTyped: prev.totalTyped + 1,
@@ -351,26 +346,27 @@ export const useTypingGame = (timeLimit = DEFAULT_TIME_LIMIT) => {
             ),
           };
         });
-
+  
         // ゲーム状態を更新（正しい入力のみを反映）
         const newUserInput = gameState.userInput + newChar;
         setGameState(prev => ({
           ...prev,
           userInput: newUserInput,
           mistakeCount: prev.mistakeCount,
+          lastMistakeChar: "",
         }));
-
+  
         // 単語を完全に入力できたかチェック
         if (newUserInput.length === gameState.currentWord.roman.length) {
           // 正解音を鳴らす
           playSound("correct");
-
+  
           // 単語完了のステータスを更新
           setTypeStats(prev => ({
             ...prev,
             wordsCompleted: prev.wordsCompleted + 1,
           }));
-
+  
           // 次の問題を表示
           setTimeout(() => {
             setGameState(state => ({
@@ -379,7 +375,7 @@ export const useTypingGame = (timeLimit = DEFAULT_TIME_LIMIT) => {
               userInput: "",
               mistakeCount: 0,
             }));
-
+  
             // リファレンスをリセット
             lastCorrectCharRef.current = -1;
             prevMistakesRef.current = {};
@@ -388,13 +384,18 @@ export const useTypingGame = (timeLimit = DEFAULT_TIME_LIMIT) => {
       } else {
         // 間違い音を鳴らす
         playSound("wrong");
-
-        // ミスカウントを増やす
+        
+        // 重要: 間違った入力の場合、lastMistakeCharとして記録するが
+        // userInputは更新しない（次の判定には進まない）
+        // ただし、mistakeCountは増やす
         setGameState(prev => ({
           ...prev,
+          // userInputは更新しない
           mistakeCount: prev.mistakeCount + 1,
+          // 間違えた文字を記録（UIで表示するため）
+          lastMistakeChar: newChar
         }));
-
+  
         // タイプ統計を更新
         setTypeStats(prev => ({
           ...prev,
