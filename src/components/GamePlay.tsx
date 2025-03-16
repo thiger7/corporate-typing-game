@@ -77,7 +77,7 @@ export const GamePlay: React.FC<GamePlayProps> = ({
       } else {
         // 間違った入力は起きないはず（実装上）
         // 念のため処理しておく
-        states.push("incorrect");
+        states.push("correct");
       }
     });
 

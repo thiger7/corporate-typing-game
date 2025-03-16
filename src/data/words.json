@@ -116,8 +116,8 @@
   },
   {
     "japanese": "特典料",
-    "roman": "tokutsuryou",
-    "alternatives": ["tokutsuryou"]
+    "roman": "tokutenryou",
+    "alternatives": []
   },
   {
     "japanese": "ギフト",
@@ -257,7 +257,7 @@
   {
     "japanese": "コンバージョン",
     "roman": "konba-jon",
-    "alternatives": ["konbaajon"]
+    "alternatives": ["konbaajon", "konba-zyon"]
   },
   {
     "japanese": "クリック",
@@ -437,7 +437,7 @@
   {
     "japanese": "配達",
     "roman": "haitatsu",
-    "alternatives": []
+    "alternatives": ["haitatu"]
   },
   {
     "japanese": "運送",
@@ -526,8 +526,8 @@
   },
   {
     "japanese": "ウィッシュリスト",
-    "roman": "uisshurisuto",
-    "alternatives": []
+    "roman": "wisshurisuto",
+    "alternatives": ["wissyurisuto", "uxissyurisuto", "uxisshurisuto"]
   },
   {
     "japanese": "新規会員登録",
