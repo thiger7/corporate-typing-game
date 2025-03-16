@@ -47,17 +47,21 @@ export const GamePlay: React.FC<GamePlayProps> = ({
     }
   };
 
-  // 文字ごとの状態を計算
-  const getCharacterStates = (): Array<"correct" | "incorrect" | "neutral"> => {
-    const states: Array<"correct" | "incorrect" | "neutral"> = [];
+  const getCharacterStates = (): Array<"correct" | "incorrect" | "neutral" | "next"> => {
+    const states: Array<"correct" | "incorrect" | "neutral" | "next"> = [];
     
     // 各文字の状態を確認
     currentWord.roman.split("").forEach((char, index) => {
       if (index >= userInput.length) {
-        // 次に入力する位置で、かつ間違いがあった場合
-        if (index === userInput.length && lastMistakeChar) {
-          // 次の文字に incorrect クラスを適用
-          states.push("incorrect");
+        // 次に入力する位置
+        if (index === userInput.length) {
+          if (lastMistakeChar) {
+            // 間違いがある場合に次の文字に incorrect クラスを適用
+            states.push("incorrect");
+          } else {
+            // 間違いがない場合は、次に入力すべき文字として next クラスを適用
+            states.push("next");
+          }
         } else {
           // まだ入力されていない文字は neutral
           states.push("neutral");
@@ -68,7 +72,7 @@ export const GamePlay: React.FC<GamePlayProps> = ({
       } else {
         // 間違った入力は起きないはず（実装上）
         // 念のため処理しておく
-        states.push("neutral");
+        states.push("incorrect");
       }
     });
 
@@ -126,7 +130,7 @@ export const GamePlay: React.FC<GamePlayProps> = ({
           {chars.map((char, index) => (
             <span 
               key={index} 
-              className={index === userInput.length && lastMistakeChar ? "incorrect" : characterStates[index]}
+              className={characterStates[index]}
             >
               {char}
             </span>

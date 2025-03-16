@@ -168,6 +168,11 @@ body {
   color: inherit;
 }
 
+.next {
+  color: #0c3047;
+  text-decoration: underline;
+}
+
 .game-stats {
   display: flex;
   justify-content: space-between;
