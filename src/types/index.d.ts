@@ -13,6 +13,8 @@ export type GameState = {
   score: number;
   isGameStarted: boolean;
   isGameOver: boolean;
+  wordTimeLimit: number;
+  wordTimeLeft: number;
 };
 
 export type GameSettings = {

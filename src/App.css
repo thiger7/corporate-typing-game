@@ -26,8 +26,9 @@ body {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  width: 90%;
-  max-width: 1100px;
+  width: 800px;
+  min-width: 600px;
+  max-width: 90%;
   margin: auto;
   max-height: 90vh;
   overflow-y: auto;
@@ -169,7 +170,7 @@ body {
 }
 
 .next {
-  color: #0c3047;
+  color: #d87c13;
   text-decoration: underline;
 }
 
@@ -467,4 +468,24 @@ h3 {
   .score-value {
     font-size: 3.5rem;
   }
+}
+
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.word-timer {
+  width: 100%;
+  height: 4px;
+  background-color: #ecf0f1;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.word-timer-bar {
+  height: 100%;
+  transition: width 0.5s linear;
 }

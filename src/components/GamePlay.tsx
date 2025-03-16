@@ -11,14 +11,15 @@ interface GamePlayProps {
   maxCombo: number;
   accuracy: number;
   wordsCompleted: number;
-  lastMistakeChar: string; // 最後に間違えた文字を追加
+  lastMistakeChar: string;
+  wordTimeLimit?: number;
+  wordTimeLeft?: number;
   onInputChange: (value: string) => void;
 }
 
 export const GamePlay: React.FC<GamePlayProps> = ({
   currentWord,
   userInput,
-  mistakeCount,
   timeLeft,
   score,
   combo,
@@ -26,6 +27,8 @@ export const GamePlay: React.FC<GamePlayProps> = ({
   accuracy,
   wordsCompleted,
   lastMistakeChar,
+  wordTimeLimit = 5,
+  wordTimeLeft,
   onInputChange,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,9 +50,11 @@ export const GamePlay: React.FC<GamePlayProps> = ({
     }
   };
 
-  const getCharacterStates = (): Array<"correct" | "incorrect" | "neutral" | "next"> => {
+  const getCharacterStates = (): Array<
+    "correct" | "incorrect" | "neutral" | "next"
+  > => {
     const states: Array<"correct" | "incorrect" | "neutral" | "next"> = [];
-    
+
     // 各文字の状態を確認
     currentWord.roman.split("").forEach((char, index) => {
       if (index >= userInput.length) {
@@ -83,13 +88,13 @@ export const GamePlay: React.FC<GamePlayProps> = ({
   const handleInputChange = (value: string) => {
     // 前回の入力値との差分を取得
     const prevInput = userInput;
-    
+
     // 新しい文字が入力されていない場合は処理しない
     if (value.length <= prevInput.length) {
       onInputChange(value);
       return;
     }
-    
+
     // 新しく入力された文字
     const newChar = value.slice(prevInput.length)[0];
     if (!newChar) {
@@ -97,13 +102,17 @@ export const GamePlay: React.FC<GamePlayProps> = ({
       onInputChange(value);
       return;
     }
-    
+
     // 次に期待される文字
     const nextIndex = prevInput.length;
     const expectedChar = currentWord.roman[nextIndex];
-    
-    console.log(`入力チェック - インデックス:${nextIndex}, 期待:${expectedChar || '終了'}, 入力:${newChar}`);
-    
+
+    console.log(
+      `入力チェック - インデックス:${nextIndex}, 期待:${
+        expectedChar || "終了"
+      }, 入力:${newChar}`,
+    );
+
     // 入力された文字が正しいかどうかを確認
     if (expectedChar && newChar !== expectedChar) {
       console.log(`ミスを検出: 期待 "${expectedChar}", 入力 "${newChar}"`);
@@ -112,7 +121,7 @@ export const GamePlay: React.FC<GamePlayProps> = ({
       // 入力が単語の長さを超えた場合
       console.log(`単語の長さを超える入力: ${value}`);
     }
-    
+
     // 親コンポーネントの処理を呼び出す
     onInputChange(value);
   };
@@ -121,17 +130,14 @@ export const GamePlay: React.FC<GamePlayProps> = ({
   const renderWord = () => {
     const characterStates = getCharacterStates();
     const chars = currentWord.roman.split("");
-    
+
     // 最後に間違えた文字がある場合の表示を調整
     return (
       <div className="word-container">
         {/* お題のスペルを表示 */}
         <div className="expected-word">
           {chars.map((char, index) => (
-            <span 
-              key={index} 
-              className={characterStates[index]}
-            >
+            <span key={index} className={characterStates[index]}>
               {char}
             </span>
           ))}
@@ -148,8 +154,10 @@ export const GamePlay: React.FC<GamePlayProps> = ({
       onClick={handleGameAreaClick}
       tabIndex={0}>
       <div className="game-header">
-        <div className="timer" id="timer">
-          {timeLeft}
+        <div className="timer-container">
+          <div className="timer" id="timer">
+            {timeLeft}
+          </div>
         </div>
         <div className="combo-display">
           <div className="combo">コンボ: {combo}</div>
@@ -176,7 +184,25 @@ export const GamePlay: React.FC<GamePlayProps> = ({
         />
 
         <div className="typing-instruction">
-          キーボードで入力してください。入力中のテキストは上に表示されます。
+          {wordTimeLeft !== undefined && (
+            <div
+              className="word-timer"
+              title={`単語の制限時間: ${wordTimeLimit}秒`}>
+              <div
+                className="word-timer-bar"
+                style={{
+                  width: `${(wordTimeLeft / wordTimeLimit) * 100}%`,
+                  backgroundColor:
+                    wordTimeLeft < wordTimeLimit * 0.3 ? "#e74c3c" : "#3498db",
+                  // wordTimeLeftがwordTimeLimitに近い（新しい単語が表示された）場合はtransitionを無効化
+                  transition:
+                    Math.abs(wordTimeLeft - wordTimeLimit) < 0.1
+                      ? "none"
+                      : "width 0.5s linear",
+                }}
+              />
+            </div>
+          )}
         </div>
 
         <div className="game-stats">

@@ -20,10 +20,12 @@ function App() {
     userInput,
     mistakeCount,
     timeLeft,
+    wordTimeLimit,    // 追加: 単語ごとの制限時間
+    wordTimeLeft,     // 追加: 単語の残り時間
     score,
     isGameStarted,
     isGameOver,
-    lastMistakeChar, // 追加: 最後に間違えた文字
+    lastMistakeChar,
   } = gameState;
 
   return (
@@ -42,12 +44,14 @@ function App() {
           userInput={userInput}
           mistakeCount={mistakeCount}
           timeLeft={timeLeft}
+          wordTimeLimit={wordTimeLimit}  // 追加
+          wordTimeLeft={wordTimeLeft}    // 追加
           score={score}
           combo={typeStats.combo}
           maxCombo={typeStats.maxCombo}
           accuracy={typeStats.accuracy}
           wordsCompleted={typeStats.wordsCompleted}
-          lastMistakeChar={lastMistakeChar} // 追加
+          lastMistakeChar={lastMistakeChar}
           onInputChange={handleInputChange}
         />
       )}
