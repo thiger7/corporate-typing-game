@@ -12,20 +12,14 @@ const MemoizedGameResult = memo(GameResult);
 const MemoizedGameSettings = memo(GameSettings);
 
 function App() {
-  const {
-    gameState,
-    startGame,
-    handleInputChange,
-    handleRetry,
-    updateSettings,
-  } = useTypingGame();
+  const { gameState, typeStats, startGame, handleInputChange, handleRetry } =
+    useTypingGame();
 
   const {
     currentWord,
     userInput,
     mistakeCount,
-    questionsRemaining,
-    questionLimit,
+    timeLeft,
     score,
     isGameStarted,
     isGameOver,
@@ -37,11 +31,7 @@ function App() {
 
       {/* ゲーム設定画面 */}
       {!isGameStarted && !isGameOver && (
-        <MemoizedGameSettings
-          questionLimit={questionLimit}
-          onQuestionLimitChange={updateSettings}
-          onStartGame={startGame}
-        />
+        <MemoizedGameSettings onStartGame={startGame} />
       )}
 
       {/* ゲーム進行画面 */}
@@ -50,8 +40,12 @@ function App() {
           currentWord={currentWord}
           userInput={userInput}
           mistakeCount={mistakeCount}
-          questionsRemaining={questionsRemaining}
+          timeLeft={timeLeft}
           score={score}
+          combo={typeStats.combo}
+          maxCombo={typeStats.maxCombo}
+          accuracy={typeStats.accuracy}
+          wordsCompleted={typeStats.wordsCompleted}
           onInputChange={handleInputChange}
         />
       )}
@@ -60,7 +54,8 @@ function App() {
       {isGameOver && (
         <MemoizedGameResult
           score={score}
-          totalQuestions={questionLimit}
+          totalQuestions={typeStats.wordsCompleted}
+          typeStats={typeStats}
           onRetry={handleRetry}
         />
       )}

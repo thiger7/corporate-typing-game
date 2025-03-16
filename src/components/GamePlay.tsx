@@ -5,8 +5,12 @@ interface GamePlayProps {
   currentWord: Word;
   userInput: string;
   mistakeCount: number;
-  questionsRemaining: number;
+  timeLeft: number;
   score: number;
+  combo: number;
+  maxCombo: number;
+  accuracy: number;
+  wordsCompleted: number;
   onInputChange: (value: string) => void;
 }
 
@@ -14,8 +18,12 @@ export const GamePlay: React.FC<GamePlayProps> = ({
   currentWord,
   userInput,
   mistakeCount,
-  questionsRemaining,
+  timeLeft,
   score,
+  combo,
+  maxCombo,
+  accuracy,
+  wordsCompleted,
   onInputChange,
 }) => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -48,9 +56,16 @@ export const GamePlay: React.FC<GamePlayProps> = ({
 
   return (
     <div id="game" className="card">
-      <div className="timer" id="timer">
-        {questionsRemaining}
+      <div className="game-header">
+        <div className="timer" id="timer">
+          {timeLeft}
+        </div>
+        <div className="combo-display">
+          <div className="combo">コンボ: {combo}</div>
+          <div className="max-combo">最大コンボ: {maxCombo}</div>
+        </div>
       </div>
+
       <div className="container">
         <div className="word-display">
           <div id="wordDisplay">{currentWord.japanese}</div>
@@ -68,11 +83,13 @@ export const GamePlay: React.FC<GamePlayProps> = ({
           className="type-input"
           value={userInput}
           onChange={e => onInputChange(e.target.value)}
+          placeholder="ここにタイピングしてください"
           autoFocus
         />
         <div className="game-stats">
           <div id="score">スコア: {score}</div>
-          <div id="mistakeCount">ミス: {mistakeCount}</div>
+          <div id="completed">完了単語数: {wordsCompleted}</div>
+          <div id="accuracy">正確率: {accuracy}%</div>
         </div>
       </div>
     </div>
